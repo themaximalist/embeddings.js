@@ -1,0 +1,25 @@
+{
+    "name": "embeddings.js",
+    "description": "Simple text feature-extraction embeddings",
+    "type": "module",
+    "version": "0.0.1",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "keywords": [
+        "word",
+        "embeddings",
+        "feature-extraction"
+    ],
+    "author": "The Maximalist",
+    "license": "MIT",
+    "dependencies": {
+        "@xenova/transformers": "^2.13.0"
+    },
+    "devDependencies": {
+        "ems": "^1.6.1",
+        "esm": "^3.2.25",
+        "mocha": "^10.2.0"
+    }
+}

@@ -1,8 +1,8 @@
 {
-    "name": "embeddings.js",
+    "name": "@themaximalist/embeddings.js",
     "description": "Simple text feature-extraction embeddings",
     "type": "module",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": "src/index.js",
     "scripts": {
         "test": "mocha"
@@ -15,7 +15,8 @@
     "author": "The Maximalist",
     "license": "MIT",
     "dependencies": {
-        "@xenova/transformers": "^2.13.0"
+        "@xenova/transformers": "^2.13.0",
+        "openai": "^4.24.1"
     },
     "devDependencies": {
         "ems": "^1.6.1",

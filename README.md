@@ -17,6 +17,12 @@
 npm install @themaximalist/embeddings.js
 ```
 
+To use local embeddings, be sure to install the model as well
+
+```bash
+npm install @xenova/transformers
+```
+
 
 
 ## Usage
@@ -29,11 +35,11 @@ const embedding = await embeddings("Hello World!");
 // [ -0.011776604689657688,   0.024298833683133125,  0.0012317118234932423, ... ] // 384 dimension embedding array
 
 // openai
-const embedding = await embeddings("Hello World", "openai");
+const embedding = await embeddings("Hello World", { model: "openai"});
 // [ 0.0023471874,  0.00028121442, -0.0022135566, ... ] // 1536 dimension embedding array
 
 // don't cache (on by default)
-const embedding = await embeddings("Hello World!", "local", false);
+const embedding = await embeddings("Hello World!", { model: "Xenova/all-MiniLM-L6-v2", cache: false});
 // ...
 ```
 

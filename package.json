@@ -2,7 +2,7 @@
     "name": "@themaximalist/embeddings.js",
     "description": "Simple text feature-extraction embeddings",
     "type": "module",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "main": "src/index.js",
     "scripts": {
         "test": "mocha"
@@ -15,12 +15,21 @@
     "author": "The Maximalist",
     "license": "MIT",
     "dependencies": {
-        "@xenova/transformers": "^2.13.0",
+        "node-fetch": "^3.3.2",
         "openai": "^4.24.1"
     },
     "devDependencies": {
+        "dotenv-extended": "^2.9.0",
         "ems": "^1.6.1",
         "esm": "^3.2.25",
         "mocha": "^10.2.0"
+    },
+    "peerDependencies": {
+        "@xenova/transformers": "^2.14.0"
+    },
+    "peerDependenciesMeta": {
+        "@xenova/transformers": {
+            "optional": true
+        }
     }
 }

@@ -1,7 +1,7 @@
 import fs from "fs";
 
 let cache = {};
-const CACHE_FILE = "embeddings.cache.json";
+const CACHE_FILE = ".embeddings.cache.json";
 
 async function load() {
     if (fs.existsSync(CACHE_FILE)) {

@@ -4,6 +4,7 @@ export default async function embeddings(input, options = {}) {
     if (!input || typeof input !== "string") throw new Error("input must be a string");
 
     const OPENAI_API_KEY = options.apikey || process.env.OPENAI_API_KEY;
+
     if (!OPENAI_API_KEY) throw new Error("OPENAI_API_KEY environment variable is required");
     const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 

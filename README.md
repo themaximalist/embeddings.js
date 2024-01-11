@@ -5,7 +5,7 @@
 -   Easy to use text embeddings for Node.js
 -   Supports local embeddings with [Xenova/all-MiniLM-L6-v2](https://huggingface.co/Xenova/all-MiniLM-L6-v2)
 -   Supports openai embeddings with [text-embedding-ada-002](https://platform.openai.com/docs/guides/embeddings/how-to-get-embeddings)
--   Caches embeddings to `embeddings.cache.json`
+-   Caches embeddings to `.embeddings.cache.json`
 -   Use a vector search database (like [vectordb.js](https://github.com/themaximal1st/vectordb.js) to find similar embeddings)
 -   MIT license
 

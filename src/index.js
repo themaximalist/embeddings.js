@@ -36,6 +36,7 @@ export default async function embeddings(input, options = {}) {
     let embedding = await get(input, model);
     if (options.cache && embedding) return embedding;
 
+
     if (service === "openai") {
         embedding = await openai(input, options);
     } else if (service === "modeldeployer") {

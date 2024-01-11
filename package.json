@@ -2,7 +2,7 @@
     "name": "@themaximalist/embeddings.js",
     "description": "Simple text feature-extraction embeddings",
     "type": "module",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "main": "src/index.js",
     "scripts": {
         "test": "mocha"

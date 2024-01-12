@@ -1,3 +1,6 @@
+import debug from "debug";
+const log = debug("embeddings.js");
+
 import transformers from "./transformers.js"
 import openai from "./openai.js"
 import modeldeployer from "./modeldeployer.js"
@@ -33,9 +36,14 @@ export default async function embeddings(input, options = {}) {
 
     const { service, model } = parseServiceModel(options.service, options.model);
 
-    let embedding = await get(input, model);
-    if (options.cache && embedding) return embedding;
 
+    let embedding = await get(input, model);
+    if (options.cache && embedding) {
+        log(`found cached embedding for ${service}/${model}`);
+        return embedding;
+    }
+
+    log(`fetching embedding from ${service}/${model} with ${JSON.stringify(options)}`);
 
     if (service === "openai") {
         embedding = await openai(input, options);
@@ -53,30 +61,3 @@ export default async function embeddings(input, options = {}) {
 
     return embedding;
 }
-
-// TODO: convert this to service/model, just like LLM
-/*
-export default async function embeddings(input, options = {}) {
-
-
-
-
-    if (model == MODEL_OPENAI) {
-        embedding = await openai(input, options);
-    } else if (model == MODEL_MODELDEPLOYER) {
-        embedding = await modeldeployer(input, options);
-    } else if (model == MODEL_LOCAL) {
-        embedding = await local(input, options);
-    } else {
-        throw new Error("Unknown model: " + model);
-    }
-
-    if (cache && embedding) {
-        await set(input, embedding, model);
-    }
-
-    return embedding;
-}
-*/
-
-// readme

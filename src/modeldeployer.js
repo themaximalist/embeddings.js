@@ -3,7 +3,6 @@ const log = debug("embeddings.js:modeldeployer");
 
 import fetch from "node-fetch"
 
-// TODO: update
 const ENDPOINT = "http://127.0.0.1:3000/api/v1/embeddings";
 
 export default async function embeddings(input, options = {}) {
@@ -15,7 +14,7 @@ export default async function embeddings(input, options = {}) {
 
     const body = { input, options };
 
-    console.log(`sending to ${ENDPOINT} with body ${JSON.stringify(body)}`);
+    log(`sending to ${ENDPOINT} with body ${JSON.stringify(body)}`);
 
     const response = await fetch(options.endpoint || ENDPOINT, {
         method: "POST",

@@ -14,10 +14,11 @@ describe("Array", function () {
     it("create embedding (modeldeployer)", async function () {
         this.timeout(10000);
 
-        // openai embedding model
+        // remote openai embedding model
         const embedding = await embeddings("Hello World!", {
+            endpoint: process.env.MODELDEPLOYER_ENDPOINT,
             service: "modeldeployer",
-            model: "7cd96f49-9653-4d03-b47d-65bcee807e71",
+            model: process.env.MODELDEPLOYER_API_KEY,
             apikey: process.env.OPENAI_API_KEY
         });
         assert(embedding);

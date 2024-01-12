@@ -1,8 +1,8 @@
 {
     "name": "@themaximalist/embeddings.js",
-    "description": "Simple text feature-extraction embeddings",
+    "description": "Simple text embeddings",
     "type": "module",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "main": "src/index.js",
     "scripts": {
         "test": "mocha"
@@ -19,9 +19,8 @@
         "openai": "^4.24.1"
     },
     "devDependencies": {
+        "debug": "^4.3.4",
         "dotenv-extended": "^2.9.0",
-        "ems": "^1.6.1",
-        "esm": "^3.2.25",
         "mocha": "^10.2.0"
     },
     "peerDependencies": {

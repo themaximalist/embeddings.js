@@ -1,3 +1,4 @@
 node_modules/
 .embeddings.cache.json
+.embeddings.cache2.json
 .env

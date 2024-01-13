@@ -4,13 +4,66 @@ const log = debug("embeddings.js");
 import transformers from "./transformers.js"
 import openai from "./openai.js"
 import modeldeployer from "./modeldeployer.js"
-import { get, set } from "./cache.js"
+import Cache from "./cache.js"
 
-const DEFAULT_SERVICE = "transformers";
-const DEFAULT_MODEL = "Xenova/all-MiniLM-L6-v2";
+export default function Embeddings(arg1, arg2) {
 
-function parseServiceModel(service = null, model = null) {
-    if (!service && !model) { return { service: DEFAULT_SERVICE, model: DEFAULT_MODEL } }
+    // function call
+    if (!(this instanceof Embeddings)) {
+        return new Promise(async (resolve, reject) => {
+            const embeddings = new Embeddings(arg2);
+            try {
+                resolve(await embeddings.fetch(arg1));
+            } catch (e) {
+                reject(e);
+            }
+        });
+    }
+
+    this.options = arg1 || {};
+    if (typeof this.options.cache === "undefined") { this.options.cache = true; }
+
+    this.cache = null;
+
+    const { service, model } = Embeddings.parseServiceModel(this.options.service, this.options.model);
+    this.service = service;
+    this.model = model;
+}
+
+Embeddings.prototype.fetch = async function (input) {
+    if (this.options.cache && !this.cache) {
+        this.cache = new Cache(this.options.cache_file);
+        await this.cache.load();
+    }
+
+
+    let embedding = await this.cache.get(input, this.model);
+    if (this.options.cache && embedding) {
+        log(`found cached embedding for ${this.service}/${this.model}`);
+        return embedding;
+    }
+
+    log(`fetching embedding from ${this.service}/${this.model} with ${JSON.stringify(this.options)}`);
+
+    if (this.service === "openai") {
+        embedding = await openai(input, this.options);
+    } else if (this.service === "modeldeployer") {
+        embedding = await modeldeployer(input, this.options);
+    } else if (this.service === "transformers") {
+        embedding = await transformers(input, this.options);
+    } else {
+        throw new Error("Unknown model: " + this.model);
+    }
+
+    if (this.options.cache && embedding) {
+        await this.cache.set(input, embedding, this.model);
+    }
+
+    return embedding;
+}
+
+Embeddings.parseServiceModel = function (service = null, model = null) {
+    if (!service && !model) { return { service: Embeddings.defaultService, model: Embeddings.defaultModel } }
 
     // guess the service
     if (!service && model) {
@@ -31,33 +84,5 @@ function parseServiceModel(service = null, model = null) {
     return { service, model }
 }
 
-export default async function embeddings(input, options = {}) {
-    if (typeof options.cache === "undefined") { options.cache = true }
-
-    const { service, model } = parseServiceModel(options.service, options.model);
-
-
-    let embedding = await get(input, model);
-    if (options.cache && embedding) {
-        log(`found cached embedding for ${service}/${model}`);
-        return embedding;
-    }
-
-    log(`fetching embedding from ${service}/${model} with ${JSON.stringify(options)}`);
-
-    if (service === "openai") {
-        embedding = await openai(input, options);
-    } else if (service === "modeldeployer") {
-        embedding = await modeldeployer(input, options);
-    } else if (service === "transformers") {
-        embedding = await transformers(input, options);
-    } else {
-        throw new Error("Unknown model: " + model);
-    }
-
-    if (options.cache && embedding) {
-        await set(input, embedding, model);
-    }
-
-    return embedding;
-}
+Embeddings.defaultService = "transformers";
+Embeddings.defaultModel = "Xenova/all-MiniLM-L6-v2";

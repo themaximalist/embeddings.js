@@ -1,26 +1,29 @@
 import fs from "fs";
 
-let cache = {};
 const CACHE_FILE = ".embeddings.cache.json";
 
-async function load() {
-    if (fs.existsSync(CACHE_FILE)) {
-        const data = fs.readFileSync(CACHE_FILE);
-        cache = JSON.parse(data);
+export default class Cache {
+    constructor(cache_file = CACHE_FILE) {
+        this.cache = {};
+        this.cache_file = cache_file;
+    }
+    async load() {
+        if (fs.existsSync(this.cache_file)) {
+            const data = fs.readFileSync(this.cache_file, "utf8");
+            this.cache = JSON.parse(data);
+        }
+    }
+
+    async save() {
+        fs.writeFileSync(this.cache_file, JSON.stringify(this.cache));
+    }
+
+    async set(key, value, model) {
+        this.cache[`${key}-${model}`] = value;
+        await this.save();
+    }
+
+    async get(key, model) {
+        return this.cache[`${key}-${model}`] || null;
     }
 }
-
-async function save() {
-    fs.writeFileSync(CACHE_FILE, JSON.stringify(cache));
-}
-
-export async function set(key, value, model) {
-    cache[`${key}-${model}`] = value;
-    await save();
-}
-
-export async function get(key, model) {
-    return cache[`${key}-${model}`] || null;
-}
-
-load();

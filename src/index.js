@@ -48,7 +48,7 @@ Embeddings.prototype.fetch = async function (input) {
     if (this.service === "openai") {
         embedding = await openai(input, this.options);
     } else if (this.service === "modeldeployer") {
-        embedding = await modeldeployer(input, this.options);
+        embedding = await modeldeployer(input, Object.assign({}, this.options, { model: this.model }));
     } else if (this.service === "transformers") {
         embedding = await transformers(input, this.options);
     } else {

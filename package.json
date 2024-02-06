@@ -2,8 +2,12 @@
     "name": "@themaximalist/embeddings.js",
     "description": "Simple text embeddings",
     "homepage": "https://embeddingsjs.themaximalist.com",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/themaximal1st/embeddings.js.git"
+    },
     "type": "module",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "main": "src/index.js",
     "scripts": {
         "test": "mocha"

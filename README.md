@@ -8,6 +8,7 @@
 <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/themaximal1st/embeddings.js">
 <img alt="GitHub License" src="https://img.shields.io/github/license/themaximal1st/embeddings.js">
 </div>
+<br />
 
 `Embeddings.js` is a simple interface to get `OpenAI` or local embeddings for use in vector search and text similarity.
 

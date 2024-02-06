@@ -1,8 +1,9 @@
 {
     "name": "@themaximalist/embeddings.js",
     "description": "Simple text embeddings",
+    "homepage": "https://embeddingsjs.themaximalist.com",
     "type": "module",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "main": "src/index.js",
     "scripts": {
         "test": "mocha"

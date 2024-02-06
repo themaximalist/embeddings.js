@@ -1,12 +1,24 @@
 # embeddings.js
 
-> simple embeddings for node.js
+<img src="logo.png" />
+
+<div class="badges" style="text-align: center; margin-top: 0px;">
+<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/themaximal1st/embeddings.js">
+<img alt="NPM Downloads" src="https://img.shields.io/npm/dt/%40themaximalist%2Fembeddings.js">
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/themaximal1st/embeddings.js">
+<img alt="GitHub License" src="https://img.shields.io/github/license/themaximal1st/embeddings.js">
+</div>
+`Embeddings.js` is a simple interface to get `OpenAI` or local embeddings for use in vector search and text similarity.
+
+```javascript
+await embeddings("Hello World!"); // embedding array
+```
 
 -   Easy to use text embeddings for Node.js
 -   Supports local embeddings with [Xenova/all-MiniLM-L6-v2](https://huggingface.co/Xenova/all-MiniLM-L6-v2)
--   Supports openai embeddings with [text-embedding-ada-002](https://platform.openai.com/docs/guides/embeddings/how-to-get-embeddings)
+-   Supports OpenAI embeddings with [text-embedding-ada-002](https://platform.openai.com/docs/guides/embeddings/how-to-get-embeddings)
 -   Caches embeddings to `.embeddings.cache.json`
--   Use a vector search database (like [vectordb.js](https://github.com/themaximal1st/vectordb.js) to find similar embeddings)
+-   Use a vector search database (like [vectordb.js](https://github.com/themaximal1st/vectordb.js)) to find similar embeddings
 -   MIT license
 
 
@@ -43,9 +55,11 @@ const embedding = await embeddings("Hello World!", { model: "Xenova/all-MiniLM-L
 // ...
 ```
 
+
+
 ## Configuration
 
-`embeddings.js` works out of the box, but if you use the OpenAI embeddings you'll need an `OPENAI_API_KEY` in your environment.
+`embeddings.js` works out of the box with local embeddings, but if you use the OpenAI embeddings you'll need an `OPENAI_API_KEY` in your environment.
 
 ```bash
 export OPENAI_API_KEY=<your-openai-api-key>
@@ -53,11 +67,28 @@ export OPENAI_API_KEY=<your-openai-api-key>
 
 
 
-## About
+## Vector Database
 
-https://themaximalist.com
+Embeddings can be used in any vector database like Pinecone, Chroma, PG Vector, etc...
 
-https://twitter.com/themaximal1st
+For a local vector database that runs in-memory and uses `Embeddings.js` internally, check out [VectorDB.js](https://vectordbjs.themaximalist.com).
+
+
+
+## Projects
+
+`Embeddings.js` is currently used in the following projects:
+
+-   [AI.js](https://aijs.themaximalist.com)
+-   [VectorDB.js](https://vectordbjs.themaximalist.com)
+
+
+
+
+## Author
+
+-   [The Maximalist](https://themaximalist.com/)
+-   [@themaximal1st](https://twitter.com/themaximal1st)
 
 
 

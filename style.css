@@ -23,6 +23,10 @@ h1 + p {
     padding: 0px;
 }
 
+h1 + p img {
+    max-width: 400px;
+}
+
 header {
     display: none;
 }
@@ -46,7 +50,7 @@ p {
     line-height: 1.65;
 }
 
-.sourceCode {
+div.sourceCode {
     font-size: 17px;
     background: #efefef;
     line-height: 1.6;

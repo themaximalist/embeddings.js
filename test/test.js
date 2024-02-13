@@ -41,4 +41,11 @@ describe("Array", function () {
         assert(embedding);
         assert(embedding.length == 384);
     });
+
+    it("create embedding (mistral)", async function () {
+        this.timeout(10000);
+        const embedding = await Embeddings("Hello World!", { model: "mistral-embed" });
+        assert(embedding);
+        assert(embedding.length == 1024);
+    });
 });

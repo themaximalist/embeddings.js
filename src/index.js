@@ -4,6 +4,7 @@ const log = debug("embeddings.js");
 import transformers from "./transformers.js"
 import openai from "./openai.js"
 import modeldeployer from "./modeldeployer.js"
+import Mistral from "./mistral.js"
 import Cache from "./cache.js"
 
 export default function Embeddings(arg1, arg2) {
@@ -51,6 +52,8 @@ Embeddings.prototype.fetch = async function (input) {
         embedding = await modeldeployer(input, Object.assign({}, this.options, { model: this.model }));
     } else if (this.service === "transformers") {
         embedding = await transformers(input, this.options);
+    } else if (this.service === "mistral") {
+        embedding = await Mistral(input, Object.assign({}, this.options, { model: this.model }));
     } else {
         throw new Error("Unknown model: " + this.model);
     }
@@ -69,6 +72,8 @@ Embeddings.parseServiceModel = function (service = null, model = null) {
     if (!service && model) {
         if (model.indexOf("text-embedding-ada-") === 0) {
             return { service: "openai", model }
+        } else if (model.indexOf("mistral-") === 0) {
+            return { service: "mistral", model }
         } else if (model.indexOf("modeldeployer://") === 0) {
             return { service: "modeldeployer", model }
         }
@@ -78,6 +83,8 @@ Embeddings.parseServiceModel = function (service = null, model = null) {
     if (service && !model) {
         if (service === "openai") {
             return { service, model: "text-embedding-ada-002" }
+        } else if (service === "mistral") {
+            return { service, model: "mistral-embed" }
         }
     }
 

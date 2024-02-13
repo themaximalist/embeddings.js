@@ -104,9 +104,8 @@ Library</h1>
 <img alt="GitHub License" src="https://img.shields.io/github/license/themaximal1st/embeddings.js"></p>
 </div>
 <p><br /></p>
-<p><code>Embeddings.js</code> is a simple interface to get
-<code>OpenAI</code> or local embeddings for use in vector search and
-text similarity.</p>
+<p><code>Embeddings.js</code> is a simple interface to get embeddings
+for use in vector search and text similarity.</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> <span class="fu">embeddings</span>(<span class="st">&quot;Hello World!&quot;</span>)<span class="op">;</span> <span class="co">// embedding array</span></span></code></pre></div>
 <ul>
@@ -115,9 +114,11 @@ class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-
 href="https://huggingface.co/Xenova/all-MiniLM-L6-v2">Xenova/all-MiniLM-L6-v2</a></li>
 <li>Supports OpenAI embeddings with <a
 href="https://platform.openai.com/docs/guides/embeddings/how-to-get-embeddings">text-embedding-ada-002</a></li>
+<li>Supports Mistral embeddings with <a
+href="https://docs.mistral.ai/platform/client/#embeddings">mistral-embed</a></li>
 <li>Caches embeddings to <code>.embeddings.cache.json</code></li>
 <li>Use a vector search database (like <a
-href="https://github.com/themaximal1st/vectordb.js">vectordb.js</a>) to
+href="https://github.com/themaximal1st/vectordb.js">VectorDB.js</a>) to
 find similar embeddings</li>
 <li>MIT license</li>
 </ul>
@@ -136,18 +137,23 @@ class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">// [ -0.011776604689657688,   0.024298833683133125,  0.0012317118234932423, ... ] // 384 dimension embedding array</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">// openai</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> embedding <span class="op">=</span> <span class="cf">await</span> <span class="fu">embeddings</span>(<span class="st">&quot;Hello World&quot;</span><span class="op">,</span> { <span class="dt">model</span><span class="op">:</span> <span class="st">&quot;openai&quot;</span>})<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> embedding <span class="op">=</span> <span class="cf">await</span> <span class="fu">embeddings</span>(<span class="st">&quot;Hello World&quot;</span><span class="op">,</span> { <span class="dt">service</span><span class="op">:</span> <span class="st">&quot;openai&quot;</span>})<span class="op">;</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">// [ 0.0023471874,  0.00028121442, -0.0022135566, ... ] // 1536 dimension embedding array</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">// don&#39;t cache (on by default)</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> embedding <span class="op">=</span> <span class="cf">await</span> <span class="fu">embeddings</span>(<span class="st">&quot;Hello World!&quot;</span><span class="op">,</span> { <span class="dt">model</span><span class="op">:</span> <span class="st">&quot;Xenova/all-MiniLM-L6-v2&quot;</span><span class="op">,</span> <span class="dt">cache</span><span class="op">:</span> <span class="kw">false</span>})<span class="op">;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span></code></pre></div>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">// mistral</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> embedding <span class="op">=</span> <span class="cf">await</span> <span class="fu">embeddings</span>(<span class="st">&quot;Hello World&quot;</span><span class="op">,</span> { <span class="dt">service</span><span class="op">:</span> <span class="st">&quot;mistral&quot;</span> })</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">// [ -0.00690460205078125, 0.0176239013671875, ... ] // 1024 dimension embedding array</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">// don&#39;t cache (on by default)</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> embedding <span class="op">=</span> <span class="cf">await</span> <span class="fu">embeddings</span>(<span class="st">&quot;Hello World!&quot;</span><span class="op">,</span> { <span class="dt">model</span><span class="op">:</span> <span class="st">&quot;Xenova/all-MiniLM-L6-v2&quot;</span><span class="op">,</span> <span class="dt">cache</span><span class="op">:</span> <span class="kw">false</span>})<span class="op">;</span></span></code></pre></div>
 <h2 id="configuration">Configuration</h2>
 <p><code>embeddings.js</code> works out of the box with local
-embeddings, but if you use the OpenAI embeddings you’ll need an
-<code>OPENAI_API_KEY</code> in your environment.</p>
+embeddings, but if you use the OpenAI or Mistral embeddings you’ll need
+an <code>OPENAI_API_KEY</code> or <code>MISTRAL_API_KEY</code> in your
+environment.</p>
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENAI_API_KEY</span><span class="op">=&lt;</span>your-openai-api-key<span class="op">&gt;</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENAI_API_KEY</span><span class="op">=&lt;</span>your-openai-api-key<span class="op">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MISRAL_API_KEY</span><span class="op">=&lt;</span>your-mistral-api-key<span class="op">&gt;</span></span></code></pre></div>
 <h2 id="vector-database">Vector Database</h2>
 <p>Embeddings can be used in any vector database like Pinecone, Chroma,
 PG Vector, etc…</p>

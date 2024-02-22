@@ -78,16 +78,66 @@ const embedding = await embeddings("Hello World", {
 ```
 
 ## Disable Cache
-`Embeddings.js` caches by default, by you can disable it by passing `cache: false` as an option.
+`Embeddings.js` caches by default, but you can disable it by passing `cache: false` as an option.
 
 ```javascript
 // don't cache (on by default)
 const embedding = await embeddings("Hello World!", {
-    model: "Xenova/all-MiniLM-L6-v2",
     cache: false
 });
 ```
 
+## Embeddings API
+
+The `Embeddings.js` API is a simple function you call with your text, with an optional config object.
+
+
+```javascript
+await embeddings(
+    input, // Text input to compute embeddings
+    {
+        service: "openai", // Embedding service
+        model: "text-embedding-ada-002", // Embedding model
+        cache: true, // Cache embeddings
+    }
+);
+```
+
+**Options**
+
+* **`service`** `<string>`: Embedding service provider. Default is `transformers`, a local embedding provider.
+* **`model`** `<string>`: Embedding service model. Default is `Xenova/all-MiniLM-L6-v2`, a local embedding model. If no model is provided, it will use the default for the selected `service`.
+* **`cache`** `<bool>`: Cache embeddings. Default is `true`.
+
+**Response**
+
+`Embeddings.js` returns a `float[]` — an array of floating-point numbers.
+
+```javascript
+[ -0.011776604689657688,   0.024298833683133125,  0.0012317118234932423, ... ]
+```
+
+The length of the array is the `dimensions` of the embedding. When performing text similarity, you'll want to know the dimensions of your embeddings to use them in a vector database.
+
+**Dimension Embeddings**
+
+* Local: 384
+* OpenAI: 1536
+* Mistral: 1024
+
+The `Embeddings.js` API ensures you have a simple way to use embeddings from multiple providers.
+
+## Debug
+
+`Embeddings.js` uses the `debug` npm module with the `embeddings.js` namespace.
+
+View debug logs by setting the `DEBUG` environment variable.
+
+```bash
+> DEBUG=embeddings.js*
+> node src/get_embeddings.js
+# debug logs
+```
 
 
 ## Vector Database

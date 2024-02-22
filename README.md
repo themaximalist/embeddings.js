@@ -1,4 +1,4 @@
-# Embeddings.js
+## Embeddings.js
 
 <img src="public/logo.png" alt="Embeddings.js — Simple Embeddings library for Node.js" class="logo" />
 
@@ -27,7 +27,7 @@ await embeddings("Hello World!"); // embedding array
 
 
 
-## Installation
+## Install
 
 ```bash
 npm install @themaximalist/embeddings.js
@@ -39,7 +39,7 @@ To use local embeddings, be sure to install the model as well
 npm install @xenova/transformers
 ```
 
-## Configuration
+## Configure
 
 `Embeddings.js` works out of the box with local embeddings, but if you use the OpenAI or Mistral embeddings you'll need an API key in your environment.
 
@@ -77,7 +77,7 @@ const embedding = await embeddings("Hello World", {
 // 1024 dimension embedding array
 ```
 
-## Disable Cache
+## Cache
 `Embeddings.js` caches by default, but you can disable it by passing `cache: false` as an option.
 
 ```javascript
@@ -89,7 +89,7 @@ const embedding = await embeddings("Hello World!", {
 
 The cache file is written to `.embeddings.cache.json`—you can also delete this file to reset the cache.
 
-## Embeddings API
+## API
 
 The `Embeddings.js` API is a simple function you call with your text, with an optional config object.
 

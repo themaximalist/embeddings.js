@@ -4,5 +4,6 @@ NAME="embeddings.js"
 DOMAIN="embeddingsjs.themaximalist.com"
 TITLE="Embeddings.js — Simple Text Embeddings library for Node.js"
 DESCRIPTION="Simple embeddings for text similarity with a vector database (OpenAI, Mistral, Local)"
+CLASSES=""
 
-readme-to-index "$NAME" "$DOMAIN" "$TITLE" "$DESCRIPTION"
+readme-to-index "$NAME" "$DOMAIN" "$TITLE" "$DESCRIPTION" "$CLASSES"

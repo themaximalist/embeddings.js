@@ -87,6 +87,8 @@ const embedding = await embeddings("Hello World!", {
 });
 ```
 
+The cache file is written to `.embeddings.cache.json`—you can also delete this file to reset the cache.
+
 ## Embeddings API
 
 The `Embeddings.js` API is a simple function you call with your text, with an optional config object.

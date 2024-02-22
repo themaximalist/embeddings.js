@@ -180,6 +180,8 @@ class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> embedding <span class="op">=</span> <span class="cf">await</span> <span class="fu">embeddings</span>(<span class="st">&quot;Hello World!&quot;</span><span class="op">,</span> {</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">cache</span><span class="op">:</span> <span class="kw">false</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>The cache file is written to <code>.embeddings.cache.json</code>—you
+can also delete this file to reset the cache.</p>
 <h2 id="embeddings-api">Embeddings API</h2>
 <p>The <code>Embeddings.js</code> API is a simple function you call with
 your text, with an optional config object.</p>

@@ -2,7 +2,7 @@
 
 <img src="public/logo.png" alt="Embeddings.js — Simple Embeddings library for Node.js" class="logo" />
 
-<div class="badges" style="text-align: center; margin-top: -10px;">
+<div class="badges" style="text-align: center; margin-top: 10px;">
 <a href="https://github.com/themaximal1st/embeddings.js"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/themaximal1st/embeddings.js"></a>
 <a href="https://www.npmjs.com/package/@themaximalist/embeddings.js"><img alt="NPM Downloads" src="https://img.shields.io/npm/dt/%40themaximalist%2Fembeddings.js"></a>
 <a href="https://github.com/themaximal1st/embeddings.js"><img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/themaximal1st/embeddings.js"></a>

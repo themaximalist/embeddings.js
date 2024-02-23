@@ -1093,8 +1093,40 @@ figure img {
   margin-top: 150px;
 }
 
+#content.gap-sm-1 #TOC > ul {
+  margin-top: 170px;
+}
+
+#content.gap-sm-2 #TOC > ul {
+  margin-top: 190px;
+}
+
+#content.gap-sm-3 #TOC > ul {
+  margin-top: 210px;
+}
+
+#content.gap-sm-4 #TOC > ul {
+  margin-top: 230px;
+}
+
 #content.gap-md #TOC > ul {
   margin-top: 250px;
+}
+
+#content.gap-md-1 #TOC > ul {
+  margin-top: 270px;
+}
+
+#content.gap-md-2 #TOC > ul {
+  margin-top: 290px;
+}
+
+#content.gap-md-3 #TOC > ul {
+  margin-top: 310px;
+}
+
+#content.gap-md-4 #TOC > ul {
+  margin-top: 330px;
 }
 
 #content.gap-lg #TOC > ul {

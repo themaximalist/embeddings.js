@@ -101,6 +101,7 @@ await embeddings(
         service: "openai", // Embedding service
         model: "text-embedding-ada-002", // Embedding model
         cache: true, // Cache embeddings
+        cache_file: ".embeddings.cache.json", // Cache file
     }
 );
 ```
@@ -110,6 +111,7 @@ await embeddings(
 * **`service`** `<string>`: Embedding service provider. Default is `transformers`, a local embedding provider.
 * **`model`** `<string>`: Embedding service model. Default is `Xenova/all-MiniLM-L6-v2`, a local embedding model. If no model is provided, it will use the default for the selected `service`.
 * **`cache`** `<bool>`: Cache embeddings. Default is `true`.
+* **`cache_file`** `<string>`: Cache file. Default is `.embeddings.cache.json`.
 
 **Response**
 

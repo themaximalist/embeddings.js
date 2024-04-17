@@ -209,8 +209,9 @@ class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">service</span><span class="op">:</span> <span class="st">&quot;openai&quot;</span><span class="op">,</span> <span class="co">// Embedding service</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">model</span><span class="op">:</span> <span class="st">&quot;text-embedding-ada-002&quot;</span><span class="op">,</span> <span class="co">// Embedding model</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">cache</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="co">// Cache embeddings</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">cache_file</span><span class="op">:</span> <span class="st">&quot;.embeddings.cache.json&quot;</span><span class="op">,</span> <span class="co">// Cache file</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
 <p><strong>Options</strong></p>
 <ul>
 <li><strong><code>service</code></strong> <code>&lt;string&gt;</code>:
@@ -223,6 +224,9 @@ model is provided, it will use the default for the selected
 <code>service</code>.</li>
 <li><strong><code>cache</code></strong> <code>&lt;bool&gt;</code>: Cache
 embeddings. Default is <code>true</code>.</li>
+<li><strong><code>cache_file</code></strong>
+<code>&lt;string&gt;</code>: Cache file. Default is
+<code>.embeddings.cache.json</code>.</li>
 </ul>
 <p><strong>Response</strong></p>
 <p><code>Embeddings.js</code> returns a <code>float[]</code> — an array

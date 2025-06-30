@@ -158,8 +158,12 @@ For a local vector database that runs in-memory and uses `Embeddings.js` interna
 
 -   [AI.js](https://aijs.themaximalist.com) — simple AI library
 -   [VectorDB.js](https://vectordbjs.themaximalist.com) — local text similarity search
--   [HyperType](https://hypertypelang.com) — knowledge graph toolkit
--   [HyperTyper](https://hypertyper.com) — multidimensional mind mapping
+-   [Infinity Arcade](https://infinityarcade.com) — play any text adventure game
+-   [News Score](https://newsscore.com) — score and sort the news
+-   [AI Image Explorer](https://aiimageexplorer.com) — image explorer
+-   [Think Machine](https://thinkmachine.com) — AI research assistant
+-   [Thinkable Type](https://thinkabletype.com) — Information Architecture Language
+-   [Minds App](https://mindsapp.com) — AI chat in your menubar
 
 
 ## License

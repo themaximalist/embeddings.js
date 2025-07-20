@@ -32,16 +32,17 @@ export default function Embeddings(arg1, arg2) {
 }
 
 Embeddings.prototype.fetch = async function (input) {
-    if (this.options.cache && !this.cache) {
-        this.cache = new Cache(this.options.cache_file);
-        await this.cache.load();
-    }
-
-
-    let embedding = await this.cache.get(input, this.model);
-    if (this.options.cache && embedding) {
-        log(`found cached embedding for ${this.service}/${this.model}`);
-        return embedding;
+    let embedding;
+    if (this.options.cache) {
+        if (!this.cache) {
+            this.cache = new Cache(this.options.cache_file);
+            await this.cache.load();
+        }
+        embedding = await this.cache.get(input, this.model)
+        if( embedding ) {
+            log(`found cached embedding for ${this.service}/${this.model}`);
+            return embedding;
+        }
     }
 
     log(`fetching embedding from ${this.service}/${this.model} with ${JSON.stringify(this.options)}`);

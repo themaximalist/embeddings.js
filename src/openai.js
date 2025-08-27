@@ -16,7 +16,7 @@ export default async function embeddings(input, options = {}) {
     if (!response) throw new Error('No response from OpenAI API');
     if (!response.data) throw new Error('No data in response from OpenAI API');
     if (!response.data) throw new Error('No internal data in response from OpenAI API');
-    if (response.data.length !== 1) throw new Error('Expected 1 embedding, got ' + response.data.data.length);
+    if (response.data.length !== 1) throw new Error('Expected 1 embedding, got ' + response.data.length);
     if (!response.data[0].embedding) throw new Error('No embedding in response from OpenAI API');
 
     return response.data[0].embedding;
